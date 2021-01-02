@@ -1,0 +1,160 @@
+﻿
+@{
+    Layout = null;
+}
+@model Common.Dtos.UserDto
+
+
+<link rel="stylesheet" href="~/css/SignIn.css" />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <div id="navwrapper">
+        <div id="navbar">
+            <table class="tablewrapper">
+                <tr>
+                    <td class="row1">Email or Phone</td>
+                    <td class="row1">Password</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="email" placeholder="Email" type="text" class="inputtext">
+                    </td>
+                    <td>
+                        <input id="password" placeholder="Password" type="password" class="inputtext">
+                    </td>
+                    <td><button onclick="SignIn()" type="submit" class="btn " style="background-color:#3B5998; border-color:none; color:white">Log in</button></td>
+                </tr>
+                
+            </table>
+
+            <h1 class="logowrapper" style="color:white;">facebook</h1>
+
+        </div>
+    </div>
+
+    <div id="contentwrapper">
+        <div id="content">
+
+            <div id="leftbod">
+
+                <div class="connect bolder">
+                    Connect with friends and the
+                    world around you on Facebook.
+                </div>
+
+                <div class="leftbar">
+                    @*<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2365-6/851565_602269956474188_918638970_n.png" alt="" class="iconwrap fb1" />*@
+                    @*<div class="fb1">
+                        <span class="rowtext">See photos and updates</span>
+                        <span class="rowtext2 fb1">from friends in News Feed</span>
+                    </div>*@
+                </div>
+
+                <div class="leftbar">
+                    @*<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2365-6/851585_216271631855613_2121533625_n.png" alt="" class="iconwrap fb1" />*@
+                    <div class="fb1">
+                        <span class="rowtext">Share what's new</span>
+                        <span class="rowtext2 fb1">in your life on your timeline</span>
+                    </div>
+                </div>
+
+                <div class="leftbar">
+                    @*<img src="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-xap1/t39.2365-6/851558_160351450817973_1678868765_n.png " alt="" class="iconwrap fb1" />*@
+                    <div class="fb1">
+                        <span class="rowtext">Find more</span>
+                        <span class="rowtext2 fb1">of what you're looking for with graph search</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="rightbod">
+                <div class="signup bolder">Sign Up</div>
+                <div class="free bolder">It's free and always will be</div>
+                <form asp-action="SignUp">
+
+                    <div class="formbox">
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        <input type="text" asp-for="@Model.Name" class="inputbody in1" placeholder="Name">
+
+                        @*<span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                            <input type="text" asp-for="@Model.Surname" class="inputbody in1 fr" placeholder="Last name">*@
+                    </div>
+                    <div class="formbox">
+                        <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+                        <input  type="text" asp-for="@Model.Surname" class="inputbody in2" placeholder="Surname ">
+                    </div>
+                    <div class="formbox">
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                        <input  type="text" asp-for="@Model.Email" class="inputbody in2" placeholder="E-mail">
+                    </div>
+                    <div class="formbox">
+                        <span asp-validation-for="@Model.Password"></span>
+                        <input type="password" asp-for="@Model.Password" class="inputbody in2" placeholder="New password">
+                    </div>
+
+                    <div class="formbox">
+                        <div class="agree">
+                            By clicking Sign Up, you agree to our <div class="link">Terms</div> and that you have read our <div class="link">Data Use Policy</div>, including our <div class="link">Cookie Use</div>.
+                        </div>
+                    </div>
+                    <div class="formbox">
+                        <button type="submit" class="signbut bolder" value="Create">Sign Up</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    function SignIn() {
+
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let userdto = {
+            Password: password,
+            Email: email
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Account/SignIn",
+            data: userdto,
+
+            success: function (response) {
+
+                if (response) {
+                    location.href = "/Facebook/Home/@User.Identity.Name"
+                    console.log("İşlem Başarılı");
+                }
+                else {
+                    alert("Kullanıcı adı veya şifre hatalı.");
+                    
+                }
+
+            },
+            error: function () {
+
+                console.log("Hata Oluştu");
+            }
+        });
+    }
+
+</script>
+

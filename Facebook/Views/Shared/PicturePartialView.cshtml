@@ -1,0 +1,84 @@
+﻿@using Common.Dtos;
+@model Common.Dtos.UserDto
+@using Microsoft.AspNetCore.Http;
+
+<div id="cover">
+    @if (Model != null)
+
+    {
+        <img alt="Cover Photo" src="~/images/svg/resim3.jpg" id="cover-photo" />
+        
+        <div class="row" id="header-columns">
+            <div class="col-md-12" id="profile-pic-col" style="z-index: 10;">
+                <img class="img-thumbnail" alt="Profile Picture" src="~/img/@Model.ProfileImage" />
+                @*<h1>@Model.Name</h1>*@
+                @if (Context.Session.GetString("friendMail") != User.Identity.Name)
+                {
+                    if (Model.button == false)
+                    {
+                        <button type="button" class="btn btn-default btn-sm" onclick="AddFriend('@Model.Email')">Add a Friend</button>
+                    }
+                    else
+                    {
+                       <button type="button" class="btn btn-default btn-sm" onclick="RemoveFriend('@Model.Email')">Remove a Friend</button>
+                           
+                    }
+
+                }
+
+            </div>
+            <div class="row">
+                <div class="md-12">
+
+                </div>
+            </div>
+
+            @*<div id="cover-buttons-group">
+                    <button type="button" class="btn btn-default btn-sm">Update Info</button>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default btn-sm">View Activity Log</button>
+                        <button type="button" class="btn btn-default btn-sm">...</button>
+                    </div>
+                </div>*@
+        </div>
+
+    }
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script >
+    function AddFriend(email) {
+        $.ajax({
+            type: "GET",
+            url: "/Profile/AddFriend",
+            data: { Email: email },
+            success: function (response) {
+                if (response) {
+                    location.href = "/Profile/Profile/";
+                }
+
+            },
+            error: function () {
+                debugger;
+                console.log("Hata Oluştu");
+            }
+        })
+    }
+
+    function RemoveFriend(email) {
+        $.ajax({
+            type: "GET",
+            url: "/Profile/RemoveFriend",
+            data: { Email: email },
+            success: function (response) {
+                if (response) {
+                    location.href = "/Profile/Profile/";
+                }
+
+            },
+            error: function () {
+                debugger;
+                console.log("Hata Oluştu");
+            }
+        })
+    }
+</script>

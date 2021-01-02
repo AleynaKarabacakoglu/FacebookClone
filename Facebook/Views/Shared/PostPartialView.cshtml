@@ -1,0 +1,13 @@
+﻿@using Common.Dtos;
+@model IEnumerable<Common.Dtos.PostDto>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+
+        <partial name="HomePostsPartialView" model="item" />
+       
+
+    }
+}

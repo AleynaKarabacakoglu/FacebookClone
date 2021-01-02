@@ -1,0 +1,57 @@
+﻿
+@using Common.Dtos
+@model IEnumerable<PostDto>
+@using Microsoft.AspNetCore.Http;
+@foreach (var post in Model)
+{
+    <div class="wall-post" id="post-1">
+        <img src="~/img/@post.ProfilPicture" alt="Profile Icon">
+        <span class="post-caption">
+            <h2 style="margin-top:0px;" > @post.UserName</h2>
+            <p class="faded-gray-font">@post.CreatedDate</p>
+        </span>
+        <span class="post-content-caption"> <h6 style=" text-align:center; font-size:14px;" >@post.Text</h6> </span>
+       
+
+        @if (post.Image != null)
+        {
+            <div class="ml-5" style="margin-top:auto" class="post__image">
+                 <img src="~/img/@post.Image" alt="" style="width: 100%;height: auto; text-align: center">
+
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group btn-group-justified comment-buttons blue-font">
+                    <a role="button" class="btn btn-default btn-md "><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like</a>
+                    <a role="button" class="btn btn-default btn-md"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comment</a>
+                    <a role="button" class="btn btn-default btn-md"> <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Share </a>
+                </div>
+                @*<div class="comments">
+                    <div class="who-liked">
+                        <p class="who-liked-p"><span class="glyphicon glyphicon-thumbs-up blue-font" aria-hidden="true"></span>
+                        <p class="blue-font">Sarah Chen and 22 others</p>
+                      
+                    </div>
+                    <div class="a-comment">
+                        <img src="http://placehold.it/40x40" alt="img" class="img-thumbnail">
+                        <span><span class="blue-font"><b>Dina Guilak</b></span> you guys are so cute!</span>
+                        <div class="likers">
+                            <span class="blue-font">Like   Reply </span>
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <p class="blue-font"> 2</p>
+                            <span class="">    an hour ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-form">
+                        <img class="img-thumbnail" src="http://placehold.it/40x40/">
+                        <form action="#" method="post">
+                            <input type="text" placeholder="Write a comment...">
+                        </form>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+}
+    

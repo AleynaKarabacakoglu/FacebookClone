@@ -1,0 +1,22 @@
+﻿
+@using Common.Dtos
+@model IEnumerable<CommentDto>
+@using Microsoft.AspNetCore.Http;
+@foreach (var comment in Model)
+{
+
+
+
+    <span class="post-content-caption"> <h6 style=" text-align:center; font-size:14px;">@comment.Text</h6> </span>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-group btn-group-justified comment-buttons blue-font">
+                <a role="button" class="btn btn-default btn-md "><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like</a>
+                <a role="button" class="btn btn-default btn-md"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comment</a>
+                <a role="button" class="btn btn-default btn-md"> <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Share </a>
+            </div>
+        </div>
+    </div>
+}
+

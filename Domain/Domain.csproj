@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201013140449_mert1.cs" />
+    <Compile Remove="Migrations\20201013140449_mert1.Designer.cs" />
+    <Compile Remove="Migrations\20201013142334_first.cs" />
+    <Compile Remove="Migrations\20201013142334_first.Designer.cs" />
+    <Compile Remove="Migrations\20201014180833_Aleyna.cs" />
+    <Compile Remove="Migrations\20201014180833_Aleyna.Designer.cs" />
+    <Compile Remove="Migrations\20201014181040_mg.cs" />
+    <Compile Remove="Migrations\20201014181040_mg.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\Abstract\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,399 @@
+﻿body {
+    background-color: rgb(231, 233, 237);
+}
+
+.blue-font {
+    color: rgb(54, 88, 174);
+}
+
+.faded-gray-font {
+    color: rgb(169, 173, 179 );
+}
+
+p {
+    display: inline-block;
+}
+/* ---------- navbar stuff ----------- */
+#navbar {
+    z-index: 100;
+    background-color: rgb(59,89,152);
+}
+/* --- icon ---*/
+#navbar-icon {
+    position: relative;
+    top: -5px;
+    /*left: 10px;*/
+}
+
+.navbar-header a {
+    padding-right: 5px;
+}
+/* --- search bar ---*/
+#search-bar {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+    #search-bar input {
+        position: relative;
+        width: 400px;
+    }
+
+#search-button {
+    position: relative;
+    float: right;
+}
+/* -- right buttons --*/
+#navbar-buttons button {
+    background-color: rgb(59,89,152);
+    color: white;
+    border: none;
+    border-collapse: collapse;
+    /*padding: 5px;*/
+}
+
+    #navbar-buttons button:hover {
+        background-color: rgb(53,80,137);
+    }
+/*#profile-icon {
+  position: relative;
+  top: 2px;
+}*/
+#profile-icon-button {
+    padding-right: 2px;
+}
+
+a {
+    display: inline-block;
+}
+
+/*------------ main body stuff ----------------*/
+/*--- ads ---*/
+#ad-col {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    padding-left: 50px;
+    text-align: left;
+}
+
+    #ad-col img {
+        width: 100%;
+    }
+
+.ad-text {
+    font-size: 12px;
+}
+/*--- main content ---*/
+#cover-row {
+    position: absolute;
+    width: 100%;
+    top: 100px;
+}
+
+#content-col {
+}
+
+#cover {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+/*-- coverphoto--*/
+#cover-photo {
+    position: absolute;
+    top: -50px;
+    width: 100%;
+}
+/*-- header---*/
+#header-columns {
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    left: 15px;
+}
+/*-- profile pic --*/
+#profile-pic-col {
+    position: relative;
+}
+
+#profile-photo {
+    background-color: white;
+    /*width: 100%;*/
+    /*position: relative;*/
+    /*left: 10px;*/
+    border-radius: 5px;
+}
+
+    #profile-photo img {
+        position: relative;
+        margin: 5px;
+    }
+/*-- name --*/
+#name-col {
+    position: relative;
+    top: 90px;
+    left: -10px;
+}
+
+    #name-col h1 {
+        color: white;
+        text-shadow: -2px 2px 4px black;
+        font-size: 24px;
+    }
+/*--cover photo buttons (like the settings) ---*/
+#cover-buttons-col {
+    position: relative;
+    top: 110px;
+}
+
+#cover-buttons-group {
+    float: right;
+}
+
+/*--- content row, aka after the cover photo top bar --*/
+#links-row {
+    position: relative;
+    bottom: 65px;
+    width: 100%;
+    left: 15px;
+    background-color: white;
+    border-collapse: collapse;
+    /*z-index: -10;*/
+}
+
+    #links-row .btn {
+        width: auto;
+        border-radius: 1px;
+        /*border-left: 1px solid gray;*/
+        /*border: none;*/
+        height: 50px;
+        font-weight: bold;
+        color: rgb(53, 87, 151);
+        margin: none;
+    }
+
+#main-content-row {
+    position: relative;
+    bottom: 30px;
+    width: 100%;
+    left: 15px;
+}
+
+/*---- info section ----*/
+#info-div {
+    background-color: white;
+    color: rgb(29, 33, 41);
+    padding: 10px;
+    border-radius: 2px;
+    /*left: -15px;*/
+    width: 100%;
+}
+
+    #info-div p {
+        display: block;
+    }
+
+h2 {
+    font-size: 18px;
+    text-align: left;
+}
+
+p.info-description {
+    font-size: 0.9em;
+    /*color: rgb(29, 33, 41);*/
+   /* 29 33 41*/
+}
+/*---- photos div ----*/
+#photo-set-div {
+    text-align: center;
+    margin-top: 20px;
+    background-color: white;
+    color: rgb(29, 33, 41);
+    padding: 8px;
+    border-radius: 2px;
+    /*left: -15px;*/
+    width: 100%;
+}
+
+.photo-set {
+    padding-top: 5px;
+}
+
+    .photo-set img {
+        border-radius: 2px;
+    }
+
+#friends-sidebar-div {
+    text-align: center;
+    margin-top: 20px;
+    background-color: white;
+    color: rgb(29, 33, 41);
+    padding: 8px;
+    border-radius: 2px;
+    /*left: -15px;*/
+    width: 100%;
+}
+
+/*---------- wall posts ------------*/
+.wall-post {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+    .wall-post .post-caption a {
+        color: rgb(66, 103, 178);
+    }
+
+#post-1 img {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid transparent;
+}
+
+#post-2 img {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid transparent;
+}
+
+#post-3 img {
+    float: left;
+    margin-right: 5px;
+    border: 1px solid transparent;
+}
+
+.post-caption {
+    line-height: 0.5em;
+    position: relative;
+    top: 3px;
+}
+
+    .post-caption p {
+        display: block;
+    }
+
+#post-content-caption {
+    display: block;
+}
+
+.comment-buttons {
+    margin: none;
+    padding: none;
+    /*color: rgb(246, 247, 249);*/
+    /*border-radius: 0px;*/
+    /*border: none;*/
+}
+
+    .comment-buttons .btn {
+        background-color: rgb(246, 247, 249);
+        color: light grey;
+        font-size: 12px;
+        border: none;
+        border-radius: none;
+        border-bottom: 1px solid rgb(202, 202, 202);
+    }
+
+.comments {
+    background-color: rgb(246, 247, 249);
+}
+
+.who-liked {
+    background-color: rgb(246, 247, 249);
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid rgb(202, 202, 202);
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.who-liked-p {
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+.a-comment {
+    background-color: rgb(246, 247, 249);
+}
+
+    .a-comment img {
+        float: left;
+    }
+
+.comment-form {
+    background-color: rgb(246, 247, 249);
+}
+
+    .comment-form input {
+        display: inline-block;
+        width: 85%;
+        position: relative;
+        top: 10px;
+    }
+/*--- new post ---*/
+#new-post {
+    background-color: white;
+    padding: 0px;
+}
+
+    #new-post .btn {
+        background-color: rgb(246, 247, 249);
+        /*width: 100%;*/
+        /*height: 100%;*/
+        padding: 10px;
+        border-radius: 0px;
+        border: 1px solid rgb(202, 202, 202);
+        border-collapse: collapse;
+        font-weight: bold;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #new-post .btn-group {
+        width: 100%;
+    }
+
+    #new-post img {
+        float: left;
+        margin: 10px;
+    }
+
+    #new-post textarea {
+        margin: 10px;
+        border: none;
+        resize: none;
+        width: 80%;
+        /*border-radius: 5px;*/
+        /*width: auto;*/
+        /*height: auto;*/
+    }
+
+#new-post-buttons-bottom {
+    border-top: 1px solid rgb(202, 202, 202);
+    display: inline-block;
+}
+
+    #new-post-buttons-bottom .btn {
+        border: none;
+        background-color: white;
+    }
+/*#friends-button {
+  color: white;
+  float: right;
+  margin: 5px;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 0 16px;
+}*/
+#post-button {
+    background-color: rgb(66, 103, 178);
+    border: 1px solid rgb(66, 103, 178);
+    color: white;
+    float: right;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: none;
+    padding: 0 16px;
+    /*margin-top: 10px;*/
+}

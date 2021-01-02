@@ -1,0 +1,98 @@
+﻿@using Common.Dtos;
+@model Common.Dtos.PostDto
+@using Microsoft.AspNetCore.Http;
+@{Context.Session.SetInt32("PostId", Model.PostId); }
+
+
+
+<div class="post">
+    <div class="post__header">
+        <div class="post__user">
+            <img src="~/img/@Model.ProfilPicture"
+                 alt="my-image"
+                 class="radius" />
+            <div class="post__info">
+                <h4 class="post__username">@Model.UserName @Model.UserSurname</h4>
+                <div>@Model.CreatedDate<span>👥</span></div>
+            </div>
+        </div>
+        <div>...</div>
+    </div>
+    <div style="margin:10px;">@Model.Text</div>
+    @if (Model.Image != null)
+    {
+        <div style="margin:12px;" class="post__image">
+            <img src="~/img/@Model.Image" alt="" style="width: 100%;height: auto; text-align: center">
+            @* @Context.Session.GetString("path")*@
+            @*<img src="./images/post-3.jpg" alt="people" />*@
+
+        </div>
+    }
+
+<div class="ml-4" style=" display:flex;">
+
+    <button class="mdc-fab mdc-fab--mini" onclick="Like('@Model.PostId')" style="box-shadow: none; background-color: white;" aria-label="Favorite">
+        <div class="mdc-fab__ripple"></div>
+        <span class="far fa-thumbs-up" style="color: black;">Beğen<span class="ml-2">@Model.LikeCount</span></span>
+
+    </button>
+    @*<button type="button" style="background-color:transparent; border: none;" onclick="Reply(@Model.PostId)" ><i class="far "></i></button>*@
+   
+
+    @*<button class="mdc-fab mdc-fab--mini ml-4" data-target="#Reply" data-toggle="modal" style="box-shadow: none; background-color: white;" aria-label="Favorite">
+        <div class="mdc-fab__ripple"></div>
+        <span class="far fa-thumbs-up" style="color: black;">Yorum Yap<span class="ml-2">@Model.CommentCount</span></span>
+
+    </button>
+    <partial name="ReplyPopUp" />*@
+
+</div>
+    <div id="CommentPartial"></div>
+
+
+    @*<div class="p-act like"><i class="material-icons">thumb_up_alt</i><span>Beğen</span></div>*@
+    @*<input type="text" class="form-control rounded-pill wrapper" id="PostText" placeholder="Ne düşünüyorsun?" aria-describedby="basic-addon2">
+        <button type="button" onclick="Post()" class="btn btn-primary" style="color:gray; width:40%; height:50%;">Gönder</button>*@
+</div>
+    
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function Like(postId) {
+        $.ajax({
+            type: "GET",
+            url: "/Facebook/Like",
+            data: { PostId: postId },
+            success: function (response) {
+                if (response) {
+                    location.href = "/Facebook/Home/";
+                }
+
+            },
+            error: function () {
+                debugger;
+                console.log("Hata Oluştu");
+            }
+        })
+    }
+
+    //function Dislike(postId) {
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/Facebook/Dislike",
+    //        data: { PostId: postId },
+    //        success: function (response) {
+    //            if (response) {
+    //                location.href = "/Facebook/Home/";
+    //            }
+
+    //        },
+    //        error: function () {
+    //            debugger;
+    //            console.log("Hata Oluştu");
+    //        }
+    //    })
+    //}
+</script>

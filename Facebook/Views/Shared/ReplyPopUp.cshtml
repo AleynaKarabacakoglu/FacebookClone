@@ -1,0 +1,50 @@
+﻿<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control rounded-pill wrapper" id="CommentText" placeholder="Yorum Yaz" aria-describedby="basic-addon2">
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="GetComment()" class="btn btn-primary">Yorum Yap</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function GetComment() {
+        let txt = $("#CommentText").val();
+        
+        let Comment = {
+            Text: txt,
+          
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Facebook/Comment",
+            data: Comment,
+            //dataType :"Json",
+            success: function (response) {
+                if (response) {
+                    $("#CommentPartial").html(response);
+
+                    console.log("İşlem Başarılı");
+                }
+                else {
+                    alert("Hata");
+
+                }
+            },
+            error: function () {
+
+                console.log("Hata Oluştu");
+            }
+        });
+    }
+</script>

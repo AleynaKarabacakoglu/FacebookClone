@@ -1,0 +1,197 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{ 
+    Layout = null;
+}
+
+<!doctype HTML>
+<html>
+<head>
+    <!-- get bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- link css stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="description" content="A copy of a Facebook page" />
+    <link rel="stylesheet" href="~/css/profile.css" />
+    <title>Facebook Copy</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Profile.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="~/img/facebook.png" id="navbar-icon">
+                </a>
+            </div>
+            <form class="navbar-form navbar-left" role="search" id="search-bar">
+                <div class="form-group">    
+                    <input type="text" class="form-control" placeholder="Search Facebook">
+                </div>
+                <button id="search-button" type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </form>
+            <div class="btn-group navbar-right" role="group" id="navbar-buttons">
+                
+                <a class="navbar-link" href="/Facebook/Home">
+                    <button type="button" class="btn btn-default navbar-btn"><span id="profile-icon-words">Home</span></button>
+                </a>
+                <a class="navbar-link" href="#">
+                    <button type="button" class="btn btn-default navbar-btn"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </button>
+                </a>
+                <a class="navbar-link" href="#">
+                    <button type="button" class="btn btn-default navbar-btn">
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                    </button>
+                </a>
+                <a class="navbar-link" href="#">
+                    <button type="button" class="btn btn-default navbar-btn">
+                        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div id="main" class="container">
+        <div class="col-md-9" id="content-col">
+            <div class="row" id="cover-row">
+                @*<div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-default btn-sm" data-target="#ProfilImage" data-toggle="modal">Profili Düzenle</button>
+                        <partial name="ImagePopUp" />
+                    </div>
+                </div>*@
+                <div id="PicturePartial"></div>
+                
+                <div class="row" id="links-row">
+                    @*<div class="col-md-9 col-md-offset-3">
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <a class="btn btn-default">Timeline</a>
+                            <a class="btn btn-default blue-font">About</a>
+                            <a class="btn btn-default blue-font">Photos</a>
+                            <a class="btn btn-default blue-font">Friends</a>
+                            <a class="btn btn-default blue-font">More <span class="glyphicon glyphicon-triangle-bottom " aria-hidden="true"></span></a>
+                        </div>
+                    </div>*@
+                    @if (Context.Session.GetString("friendMail") == User.Identity.Name) { 
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-default btn-sm" data-target="#ProfilImage" data-toggle="modal">Profili Düzenle</button>
+                                <partial name="ImagePopUp" />
+                            </div>
+                            <div class="col-md-3">
+                                @*<button type="button" class="btn btn-default btn-sm" >Add a Friend</button>*@
+
+                            </div>
+                        </div>
+                        }
+                </div>
+                <div class="row" id="main-content-row">
+                    <div class="col-md-5" style="left: -15px">
+                        <div id="info-div">
+                            <h2><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Intro</h2>
+                            <p style="text-align: center;">A description.</p>
+                            <hr />
+                            <p class="info-description"> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>  Works at ...</p>
+                            <p class="info-description"> <span class="glyphicon glyphicon-education" aria-hidden="true"></span>  Studied .... at ....</p>
+                            <p class="info-description"> <span class="glyphicon glyphicon-home" aria-hidden="true"></span>  Lives in...</p>
+                            <p class="info-description">
+                                <span class="glyphicon glyphicon-heart"
+                                      aria-hidden="true"></span> Relationship Status
+                            </p>
+                        </div>
+                        <div id="photo-set-div">
+                            <h2><span class="glyphicon glyphicon glyphicon-camera" aria-hidden="true"></span> Photos</h2>
+                            <hr />
+                            <div class="photo-set">
+                                <img src="~/images/svg/resim4.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/svg/resim-5.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/svg/resim-6.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                            <div class="photo-set">
+                                <img src="~/images/svg/resim-7.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/svg/resim-8.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p1.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                            <div class="photo-set">
+                                <img src="~/images/svg/resim-9.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/svg/resim10.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/svg/resim11.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                        </div>
+                        <div id="friends-sidebar-div">
+                            <h2><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span> Friends</h2>
+                            <hr />
+                            <div class="photo-set">
+                                <img src="~/images/person/p1.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p2.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p3.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                            <div class="photo-set">
+                                <img src="~/images/person/p4.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p-5.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p-6.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                            <div class="photo-set">
+                                <img src="~/images/person/p-7.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p-8.jpg" alt="A photo" class="img-rounded">
+                                <img src="~/images/person/p-9.jpg" alt="A photo" class="img-rounded">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        @if (Context.Session.GetString("friendMail") == User.Identity.Name)
+                        {
+                            <div class="wall-post" id="new-post">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="..." id="new-post-buttons-top">
+                                    <a role="button" class="btn btn-default btn-xs "> <span class=" glyphicon glyphicon-pencil" aria-hidden="true"></span> Status</a>
+                                    <a role="button" class="btn btn-default btn-xs blue-font"> <span class="glyphicon glyphicon glyphicon-camera" aria-hidden="true"></span> Photo / Video</a>
+                                    <a role="button" class="btn btn-default btn-xs blue-font"> <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Life Event</a>
+                                    <a class="btn btn-default btn-xs"> </a>
+                                </div>
+                                <div>
+
+                                    <input type="text" class="form-control rounded-pill wrapper" id="ProfilePostText" placeholder="Ne düşünüyorsun?" aria-describedby="basic-addon2">
+                                    @*<button type="button" data-target="#PostImage" data-toggle="modal" class="btn btn-primary" style="color:gray; width:40%; ">Resim EKLE</button>
+                                    <partial name="PostPopUp" />*@
+                                    <button type="button" onclick="ProfilePost()" class="btn btn-primary" style="color:gray; width:50%; ">Gönder</button>
+
+                                </div>
+
+                            </div>
+                        }
+                        <div id="ProfilePostPartial">
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3" id="ad-col">
+        <p class="faded-gray-font"><b>Sponsored</b></p>
+        <div class="an-ad">
+            <!-- <h3>Buy this!</h3> -->
+            <img src="~/images/svg/resim1.jpg">
+            <p class="blue-font ad-text"><b>You should buy this!</b></p>
+            <a href="#" class="ad-text">http://thelinktothesite.com</a>
+            <p class="ad-text">Some text about this product, that you have no interest in.</p>
+        </div>
+        <div class="an-ad">
+            <!-- <h3>Buy this!</h3> -->
+            <img src="~/images/svg/resim2.jpg">
+            <p class="blue-font ad-text"><b>Can you believe this great deal?</b></p>
+            <a href="#" class="ad-text">http://doesfacebookmonitoritsads.org</a>
+            <p class="ad-text">Some text about this product. It seems to good to be true, but does it really mean that it's too good to be true? Nonsense. It just means that i's a good deal that you should monopolize on before it's too late.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
